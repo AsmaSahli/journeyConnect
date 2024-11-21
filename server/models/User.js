@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
 
     dateOfBirth: {
         type:"Date",
-        required: true,
+        required: false,
 
     },
     phoneNumber: {
@@ -45,7 +45,14 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false,
-    }
+    },
+    failedLoginAttempts: {
+        type: Number,
+        default: 0, 
+    },
+    lockUntil: {
+        type: Number, 
+    },
 
 }, { timestamps: true });
 

@@ -1,5 +1,6 @@
 import { Alert, Button, Label, Spinner, TextInput, Card } from 'flowbite-react';
 import { useState } from 'react';
+import OAuth from '../components/OAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -104,6 +105,8 @@ import {
                     'Sign In'
                     )}
                 </Button>
+                <br/>
+                <OAuth/>
                 </form>
 
                 <div className="flex justify-center gap-2 text-sm mt-5">

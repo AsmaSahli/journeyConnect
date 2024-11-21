@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Label, Spinner, TextInput, Card } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
 import carpooling1 from '../assets/carpooling1.png';
+import OAuth from '../components/OAuth';
 
 const SignUp = () => {
     const [formData, setFormData] = useState({});
@@ -165,6 +166,8 @@ const SignUp = () => {
                                     'Join Journey Connect'
                                 )}
                             </Button>
+                            <br/>
+                            <OAuth/>
                         </form>
 
                         <div className="flex justify-center gap-2 text-sm mt-5">
