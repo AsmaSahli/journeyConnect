@@ -7,6 +7,9 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import Home from "./Pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import Messages from "./Pages/Messages";
+import DashboardTabs from "./Pages/DashboardTabs";
+
 
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
       <Route path="/" element={<Home/>} />
 
         <Route element={<PrivateRoute/>} >
+        <Route path="/messages" element={<Messages/>} />
+        <Route path="/dashProfile" element={<DashboardTabs/>} />
+
 
 
         </Route>

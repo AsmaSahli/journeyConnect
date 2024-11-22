@@ -88,8 +88,8 @@ const Header = () => {
                                 </span>
                             </Dropdown.Header>
                             <Dropdown.Item icon={FaRoute}>Your rides </Dropdown.Item>
-                            <Dropdown.Item icon={IoChatbubbleEllipsesOutline}>Inbox </Dropdown.Item>
-                            <Dropdown.Item icon={CgProfile} onClick={() => navigate('/dashboard?tab=profile')}>
+                            <Dropdown.Item icon={IoChatbubbleEllipsesOutline}onClick={() => navigate('/messages')}>Inbox </Dropdown.Item>
+                            <Dropdown.Item icon={CgProfile} onClick={() => navigate('/dashProfile')}>
                                 Profile
                             </Dropdown.Item>
                             <Dropdown.Divider />

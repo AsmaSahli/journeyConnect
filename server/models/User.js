@@ -22,11 +22,14 @@ const UserSchema = new mongoose.Schema({
 
         
     },
-    vehicles: {
+    vehicle: {
         type: String, 
         
     },
-    
+    bio: {
+        type: String, 
+        
+    },
 
     email: {
         type: String,
@@ -46,6 +49,7 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+
     failedLoginAttempts: {
         type: Number,
         default: 0, 
