@@ -9,6 +9,7 @@ import Home from "./Pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import Messages from "./Pages/Messages";
 import DashboardTabs from "./Pages/DashboardTabs";
+import Dashboard from "./Pages/Dashboard";
 
 
 
@@ -25,7 +26,8 @@ function App() {
 
         <Route element={<PrivateRoute/>} >
         <Route path="/messages" element={<Messages/>} />
-        <Route path="/dashProfile" element={<DashboardTabs/>} />
+        <Route path="/Profile" element={<DashboardTabs/>} />
+        <Route path="/Dashboard" element={<Dashboard/>} />
 
 
 
