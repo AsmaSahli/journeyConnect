@@ -1,12 +1,12 @@
+// controllers/RideController.js
 const Ride = require("../models/Ride");
-const User = require("../models/User");
 const e = require("../utils/error");
 
 module.exports = {
   // Create a new ride
   createRide: async (req, res, next) => {
     const {
-      driverId, // Pass driverId in the request body
+      driverId,
       pickupAddress,
       dropoffAddress,
       route,
@@ -33,7 +33,7 @@ module.exports = {
 
       // Create the ride
       const newRide = new Ride({
-        driver: driverId, // Use driverId from the request body
+        driver: driverId,
         pickupAddress,
         dropoffAddress,
         route,
@@ -127,7 +127,7 @@ module.exports = {
   // Join a ride as a passenger
   joinRide: async (req, res, next) => {
     const { rideId } = req.params;
-    const { userId } = req.body; // Pass userId in the request body
+    const { userId } = req.body;
 
     try {
       // Find the ride
@@ -164,7 +164,7 @@ module.exports = {
   // Leave a ride as a passenger
   leaveRide: async (req, res, next) => {
     const { rideId } = req.params;
-    const { userId } = req.body; // Pass userId in the request body
+    const { userId } = req.body;
 
     try {
       // Find the ride

@@ -1,12 +1,12 @@
-// YourRides.js
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Alert, Dropdown, Modal, Pagination } from "flowbite-react";
-import { FaRoute, FaFilter, FaSort } from "react-icons/fa";
+import { FaRoute, FaFilter, FaSort, FaComments } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RideCard from "../components/RideCard";
+import Chat from "../components/Chat"; // Import the Chat component
 
 const YourRides = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -19,6 +19,7 @@ const YourRides = () => {
   const [rideToDelete, setRideToDelete] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [ridesPerPage] = useState(8);
+  const [selectedRideId, setSelectedRideId] = useState(null); // For chat modal
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -165,6 +166,21 @@ const YourRides = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Chat Modal */}
+      {selectedRideId && (
+        <Modal show={true} onClose={() => setSelectedRideId(null)} size="xl">
+          <Modal.Header>Chat</Modal.Header>
+          <Modal.Body>
+            <Chat rideId={selectedRideId} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button color="gray" onClick={() => setSelectedRideId(null)}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   );
 };

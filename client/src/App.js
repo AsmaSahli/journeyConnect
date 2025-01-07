@@ -14,6 +14,7 @@ import PublishRidePage from "./Pages/PublishRidePage";
 import YourRides from "./Pages/YourRides";
 import EditRide from "./Pages/EditRide";
 import SearchRides from "./Pages/SearchRides";
+import Inbox from "./components/Inbox";
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/your-rides" element={<YourRides/>} />
         <Route path="/edit-ride/:rideId" element={<EditRide/>} />
         <Route path="/search-car-sharing" element={<SearchRides/>} />
+        <Route path="/inbox" element={<Inbox/>} />
 
 
 

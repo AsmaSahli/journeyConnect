@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Card, Badge, Dropdown, Pagination, Spinner } from "flowbite-react";
-import { FaCalendarAlt, FaClock, FaUserFriends, FaDollarSign, FaMapMarkerAlt } from "react-icons/fa";
+import { Button, Card, Badge, Dropdown, Pagination, Spinner, Modal } from "flowbite-react";
+import { FaCalendarAlt, FaClock, FaUserFriends, FaDollarSign, FaMapMarkerAlt, FaComments } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BsSearch } from "react-icons/bs";
+import Chat from "../components/Chat"; // Import the Chat component
 
 const SearchRides = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -16,6 +17,7 @@ const SearchRides = () => {
   const [sort, setSort] = useState("date");
   const [currentPage, setCurrentPage] = useState(1);
   const [ridesPerPage] = useState(8);
+  const [selectedRideId, setSelectedRideId] = useState(null); // For chat modal
 
   useEffect(() => {
     const fetchRides = async () => {
@@ -258,6 +260,18 @@ const SearchRides = () => {
                       Join Ride
                     </Button>
                   )}
+
+                  {/* Chat Button */}
+                  {currentUser && ride.passengers.includes(currentUser._id) && (
+                    <Button
+                      gradientDuoTone="blueToPurple"
+                      size="sm"
+                      onClick={() => setSelectedRideId(ride._id)}
+                      className="mt-2"
+                    >
+                      <FaComments className="mr-2" /> Chat
+                    </Button>
+                  )}
                 </div>
               </Card>
             ))}
@@ -272,6 +286,21 @@ const SearchRides = () => {
             />
           </div>
         </>
+      )}
+
+      {/* Chat Modal */}
+      {selectedRideId && (
+        <Modal show={true} onClose={() => setSelectedRideId(null)} size="xl">
+          <Modal.Header>Chat</Modal.Header>
+          <Modal.Body>
+            <Chat rideId={selectedRideId} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button color="gray" onClick={() => setSelectedRideId(null)}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
     </div>
   );

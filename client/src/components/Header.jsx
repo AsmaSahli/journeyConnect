@@ -107,7 +107,7 @@ const Header = () => {
                                         </Dropdown.Item>
                                         <Dropdown.Item
                                             icon={IoChatbubbleEllipsesOutline}
-                                            onClick={() => navigate('/messages')}
+                                            onClick={() => navigate('/inbox')}
                                         >
                                             Inbox
                                         </Dropdown.Item>
