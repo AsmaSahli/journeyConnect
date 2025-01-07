@@ -22,6 +22,7 @@ const port=process.env.PORT
 
 require("./routes/User.routes")(app)
 require("./routes/Auth.routes")(app)
+require("./routes/Ride.routes")(app)
 
     //middleware for errors  
     app.use ((err,req,res,next) => {

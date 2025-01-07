@@ -10,6 +10,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import Messages from "./Pages/Messages";
 import DashboardTabs from "./Pages/DashboardTabs";
 import Dashboard from "./Pages/Dashboard";
+import PublishRidePage from "./Pages/PublishRidePage";
+import YourRides from "./Pages/YourRides";
+import EditRide from "./Pages/EditRide";
+import SearchRides from "./Pages/SearchRides";
 
 
 
@@ -28,6 +32,10 @@ function App() {
         <Route path="/messages" element={<Messages/>} />
         <Route path="/Profile" element={<DashboardTabs/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path="/publish-ride" element={<PublishRidePage/>} />
+        <Route path="/your-rides" element={<YourRides/>} />
+        <Route path="/edit-ride/:rideId" element={<EditRide/>} />
+        <Route path="/search-car-sharing" element={<SearchRides/>} />
 
 
 

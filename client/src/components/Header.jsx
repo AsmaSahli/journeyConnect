@@ -55,7 +55,7 @@ const Header = () => {
                                             Search
                                         </Button>
                                     </Link>
-                                    <Link to="/offerASeat" className="flex items-center gap-2">
+                                    <Link to="/publish-ride" className="flex items-center gap-2">
                                         <Button color="light">
                                             <GrAddCircle className="mr-3 h-4 w-4" />
                                             Publish a Ride
@@ -101,7 +101,8 @@ const Header = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <Dropdown.Item icon={FaRoute}>
+                                        <Dropdown.Item icon={FaRoute}
+                                        onClick={() => navigate('/your-rides')}>
                                             Your rides
                                         </Dropdown.Item>
                                         <Dropdown.Item
