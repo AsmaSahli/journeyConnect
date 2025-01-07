@@ -21,30 +21,30 @@ import Inbox from "./components/Inbox";
 function App() {
   return (
     <BrowserRouter >
-        <Header/>
+      <Header />
       <Routes>
-      <Route element={<AuthentificationRoute/>} >
-        <Route path="/signin" element={< SignIn/>} />
-        <Route path="/signup" element={<SignUp/>} />
-      </Route>
-      <Route path="/" element={<Home/>} />
+        <Route element={<AuthentificationRoute />} >
+          <Route path="/signin" element={< SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
+        <Route path="/" element={<Home />} />
 
-        <Route element={<PrivateRoute/>} >
-        <Route path="/messages" element={<Messages/>} />
-        <Route path="/Profile" element={<DashboardTabs/>} />
-        <Route path="/Dashboard" element={<Dashboard/>} />
-        <Route path="/publish-ride" element={<PublishRidePage/>} />
-        <Route path="/your-rides" element={<YourRides/>} />
-        <Route path="/edit-ride/:rideId" element={<EditRide/>} />
-        <Route path="/search-car-sharing" element={<SearchRides/>} />
-        <Route path="/inbox" element={<Inbox/>} />
+        <Route element={<PrivateRoute />} >
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/Profile" element={<DashboardTabs />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/publish-ride" element={<PublishRidePage />} />
+          <Route path="/your-rides" element={<YourRides />} />
+          <Route path="/edit-ride/:rideId" element={<EditRide />} />
+          <Route path="/search-car-sharing" element={<SearchRides />} />
+          <Route path="/inbox" element={<Inbox />} />
 
 
 
         </Route>
       </Routes>
-      
-      
+
+
     </BrowserRouter>
   );
 }

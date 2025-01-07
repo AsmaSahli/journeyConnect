@@ -43,7 +43,7 @@ const DashProfile = () => {
             uploadImage();
         }
     }, [imageFile]);
-    
+
     const uploadImage = async () => {
         setImageFileUploading(true);
         setImageFileUploadError(null);
@@ -174,7 +174,7 @@ const DashProfile = () => {
                     <Alert color='failure'>{imageFileUploadError}</Alert>
                 )}
                 <TextInput type="text" value={`${currentUser.firstName} ${currentUser.lastName}`} disabled color="Gray" />
-                
+
                 {/* Conditionally render Date of Birth input */}
                 {currentUser.dateOfBirth ? (
                     <TextInput
@@ -192,7 +192,7 @@ const DashProfile = () => {
                         style={{ backgroundColor: '#F9FAFB', borderRadius: '6px', border: '1px solid #D1D5DB' }}
                     />
                 )}
-                
+
                 <TextInput
                     type="text"
                     id="miniBio"

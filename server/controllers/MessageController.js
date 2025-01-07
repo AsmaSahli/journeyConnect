@@ -31,25 +31,25 @@ module.exports = {
   // Get messages for a specific ride and user
   getMessages: async (req, res, next) => {
     const { rideId, userId } = req.params;
-  
+
     console.log("rideId:", rideId); // Debugging
     console.log("userId:", userId); // Debugging
-  
+
     try {
       // Validate rideId and userId
       if (!rideId || !userId) {
         return next(e.errorHandler(400, "Ride ID and User ID are required"));
       }
-  
+
       // Check if rideId and userId are valid ObjectIds
       if (!mongoose.Types.ObjectId.isValid(rideId) || !mongoose.Types.ObjectId.isValid(userId)) {
         return next(e.errorHandler(400, "Invalid Ride ID or User ID"));
       }
-  
+
       // Convert rideId and userId to ObjectIds using the 'new' keyword
       const rideObjectId = new mongoose.Types.ObjectId(rideId);
       const userObjectId = new mongoose.Types.ObjectId(userId);
-  
+
       // Fetch messages for the ride and user
       const messages = await Message.find({
         rideId: rideObjectId,
@@ -57,7 +57,7 @@ module.exports = {
       })
         .populate("senderId", "firstName lastName profilePicture")
         .populate("receiverId", "firstName lastName profilePicture");
-  
+
       res.status(200).json(messages);
     } catch (error) {
       next(error);

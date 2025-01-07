@@ -1,4 +1,3 @@
-// controllers/RideController.js
 const Ride = require("../models/Ride");
 const e = require("../utils/error");
 

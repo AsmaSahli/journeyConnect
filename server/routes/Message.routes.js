@@ -1,4 +1,3 @@
-// routes/messageRoutes.js
 const messageController = require("../controllers/MessageController");
 
 module.exports = (app) => {

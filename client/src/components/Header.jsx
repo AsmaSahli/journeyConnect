@@ -12,7 +12,7 @@ import { FaRoute } from "react-icons/fa";
 import logo1 from '../assets/logo1.png';
 import { GrAddCircle } from "react-icons/gr";
 import { BsSearch } from "react-icons/bs";
-import { HiChartPie} from 'react-icons/hi';
+import { HiChartPie } from 'react-icons/hi';
 
 const Header = () => {
     const { currentUser } = useSelector((state) => state.user);
@@ -102,7 +102,7 @@ const Header = () => {
                                 ) : (
                                     <>
                                         <Dropdown.Item icon={FaRoute}
-                                        onClick={() => navigate('/your-rides')}>
+                                            onClick={() => navigate('/your-rides')}>
                                             Your rides
                                         </Dropdown.Item>
                                         <Dropdown.Item

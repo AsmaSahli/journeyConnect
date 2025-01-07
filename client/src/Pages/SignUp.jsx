@@ -64,15 +64,15 @@ const SignUp = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-6">
             <div className="flex p-5 max-w-4xl mx-auto flex-col md:flex-row md:items-center gap-10">
-                
+
                 {/* Left Section */}
                 <div className="flex-1 text-center md:text-left space-y-6">
                     <img src={carpooling1} alt="Social Media" />
                     <p className="text-lg font-semibold text-gray-700">
-                        Welcome to <span className="text-blue-600">Journey Connect</span> 
+                        Welcome to <span className="text-blue-600">Journey Connect</span>
                     </p>
-                    
-                    <p  className="text-sm  text-gray-700">your carpooling journey starts here!</p>
+
+                    <p className="text-sm  text-gray-700">your carpooling journey starts here!</p>
                     <br />
                     <ul className="list-disc pl-5 text-left text-gray-600">
                         <li>🚗 Reconnect with your community of riders and drivers</li>
@@ -122,13 +122,13 @@ const SignUp = () => {
                             <div>
                                 <Label value="Date of Birth" />
                             </div>
-                                <input
-                                    type="date"
-                                    id="dateOfBirth"
-                                    onChange={handleChange}
-                                    max="2024-12-31" // Prevent selecting a date before 2024
-                                    style={{ backgroundColor: '#F9FAFB', borderRadius: '6px', border: '1px solid #D1D5DB'}}
-                                />
+                            <input
+                                type="date"
+                                id="dateOfBirth"
+                                onChange={handleChange}
+                                max="2024-12-31" // Prevent selecting a date before 2024
+                                style={{ backgroundColor: '#F9FAFB', borderRadius: '6px', border: '1px solid #D1D5DB' }}
+                            />
 
                             <div>
                                 <Label value="Password" />
@@ -166,8 +166,8 @@ const SignUp = () => {
                                     'Join Journey Connect'
                                 )}
                             </Button>
-                            <br/>
-                            <OAuth/>
+                            <br />
+                            <OAuth />
                         </form>
 
                         <div className="flex justify-center gap-2 text-sm mt-5">

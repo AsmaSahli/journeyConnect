@@ -17,11 +17,11 @@ const PublishRidePage = () => {
         },
         body: JSON.stringify(rideData),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to publish ride");
       }
-  
+
       const data = await response.json();
       setAlertMessage("Ride published successfully!");
       setAlertType("success");

@@ -6,7 +6,7 @@ import { FaRoute, FaFilter, FaSort, FaComments } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RideCard from "../components/RideCard";
-import Chat from "../components/Chat"; // Import the Chat component
+import Chat from "../components/Chat";
 
 const YourRides = () => {
   const { currentUser } = useSelector((state) => state.user);

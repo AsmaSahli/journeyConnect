@@ -1,4 +1,3 @@
-// components/Inbox.js
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, Avatar, Badge } from "flowbite-react";

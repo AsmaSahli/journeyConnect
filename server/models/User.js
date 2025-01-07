@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-    
+
     firstName: {
         type: String,
         required: true,
@@ -13,22 +13,22 @@ const UserSchema = new mongoose.Schema({
     },
 
     dateOfBirth: {
-        type:"Date",
+        type: "Date",
         required: false,
 
     },
     phoneNumber: {
         type: String,
 
-        
+
     },
     vehicle: {
-        type: String, 
-        
+        type: String,
+
     },
     bio: {
-        type: String, 
-        
+        type: String,
+
     },
 
     email: {
@@ -43,7 +43,7 @@ const UserSchema = new mongoose.Schema({
     profilePicture: {
         type: String,
         default:
-        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
     },
     isAdmin: {
         type: Boolean,
@@ -52,20 +52,20 @@ const UserSchema = new mongoose.Schema({
 
     failedLoginAttempts: {
         type: Number,
-        default: 0, 
+        default: 0,
     },
     lockUntil: {
-        type: Number, 
+        type: Number,
     },
 
 }, { timestamps: true });
 
 
 UserSchema.virtual("confirmPassword")
-    .get(()=>this._confirmPassword)
-    .set(value=>this._confirmPassword=value)
+    .get(() => this._confirmPassword)
+    .set(value => this._confirmPassword = value)
 
-    
+
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;

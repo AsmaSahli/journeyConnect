@@ -1,4 +1,3 @@
-// components/Chat.js
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Textarea, Modal } from "flowbite-react";
@@ -18,11 +17,11 @@ const Chat = ({ rideId }) => {
           console.error("Invalid rideId or userId");
           return;
         }
-  
+
         // Debugging: Log rideId and userId
         console.log("Fetching messages for rideId:", rideId);
         console.log("Fetching messages for userId:", currentUser._id);
-  
+
         const res = await fetch(`http://localhost:8000/messages/${rideId}/${currentUser._id}`);
         const data = await res.json();
         if (res.ok) {
@@ -32,7 +31,7 @@ const Chat = ({ rideId }) => {
         console.error("Error fetching messages:", error);
       }
     };
-  
+
     fetchMessages();
   }, [rideId, currentUser]);
 
@@ -109,11 +108,10 @@ const Chat = ({ rideId }) => {
             className={`flex ${msg.senderId._id === currentUser._id ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`p-2 rounded-lg ${
-                msg.senderId._id === currentUser._id
+              className={`p-2 rounded-lg ${msg.senderId._id === currentUser._id
                   ? "bg-blue-500 text-white"
                   : "bg-gray-200 text-gray-800"
-              }`}
+                }`}
             >
               <p>{msg.message}</p>
             </div>

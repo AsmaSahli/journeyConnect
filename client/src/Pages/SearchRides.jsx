@@ -5,7 +5,7 @@ import { FaCalendarAlt, FaClock, FaUserFriends, FaDollarSign, FaMapMarkerAlt, Fa
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BsSearch } from "react-icons/bs";
-import Chat from "../components/Chat"; // Import the Chat component
+import Chat from "../components/Chat";
 
 const SearchRides = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -92,11 +92,11 @@ const SearchRides = () => {
           prevRides.map((ride) =>
             ride._id === rideId
               ? {
-                  ...ride,
-                  passengers: ride.passengers.filter(
-                    (passenger) => passenger.toString() !== currentUser._id
-                  ),
-                }
+                ...ride,
+                passengers: ride.passengers.filter(
+                  (passenger) => passenger.toString() !== currentUser._id
+                ),
+              }
               : ride
           )
         );
@@ -229,7 +229,7 @@ const SearchRides = () => {
                       <span className="text-xs font-semibold">Dropoff: {ride.dropoffAddress}</span>
                     </div>
                   </div>
-                <br />
+                  <br />
                   {/* Join/Leave Ride Button */}
                   {currentUser ? (
                     ride.passengers.includes(currentUser._id) ? (
