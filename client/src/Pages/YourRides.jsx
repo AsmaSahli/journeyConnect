@@ -1,3 +1,4 @@
+// YourRides.js
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ const YourRides = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [rideToDelete, setRideToDelete] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [ridesPerPage] = useState(8); // Rides per page
+  const [ridesPerPage] = useState(8);
   const navigate = useNavigate();
 
   useEffect(() => {

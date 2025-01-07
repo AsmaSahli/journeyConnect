@@ -1,10 +1,21 @@
-import React from "react";
-import { Button, Card, Badge } from "flowbite-react";
-import { FaCalendarAlt, FaClock, FaUserFriends, FaDollarSign, FaEdit, FaTrash, FaMapMarkerAlt } from "react-icons/fa";
+import React, { useState } from "react";
+import { Button, Card, Badge, Modal } from "flowbite-react";
+import {
+  FaCalendarAlt,
+  FaClock,
+  FaUserFriends,
+  FaDollarSign,
+  FaEdit,
+  FaTrash,
+  FaMapMarkerAlt,
+  FaUsers,
+} from "react-icons/fa";
 
 const RideCard = ({ ride, onEdit, onDelete }) => {
+  const [showPassengersModal, setShowPassengersModal] = useState(false);
+
   return (
-    <Card >
+    <Card>
       {/* Ride Details */}
       <div className="space-y-3">
         {/* Header: Date and Status */}
@@ -87,7 +98,7 @@ const RideCard = ({ ride, onEdit, onDelete }) => {
           <FaEdit className="w-3 h-3" /> Edit
         </Button>
         <Button
-          color="failure"
+          gradientMonochrome="failure"
           outline
           size="sm"
           className="flex-1 hover:bg-red-100 transition-colors text-xs flex items-center justify-center gap-1"
@@ -95,7 +106,49 @@ const RideCard = ({ ride, onEdit, onDelete }) => {
         >
           <FaTrash className="w-3 h-3" /> Delete
         </Button>
+        <Button
+          gradientDuoTone="pinkToOrange"
+          outline
+          size="sm"
+          className="flex-1 hover:bg-blue-100 transition-colors text-xs flex items-center justify-center gap-1"
+          onClick={() => setShowPassengersModal(true)}
+        >
+          <FaUsers className="w-3 h-3" /> Passengers
+        </Button>
       </div>
+
+      {/* Passengers Modal */}
+      <Modal show={showPassengersModal} onClose={() => setShowPassengersModal(false)} size="md">
+        <Modal.Header>Passengers</Modal.Header>
+        <Modal.Body>
+          {ride.passengers.length === 0 ? (
+            <p className="text-gray-600">No passengers have joined this ride yet.</p>
+          ) : (
+            <div className="space-y-3">
+              {ride.passengers.map((passenger) => (
+                <div key={passenger._id} className="flex items-center gap-3">
+                  <img
+                    src={passenger.profilePicture || "https://via.placeholder.com/40"}
+                    alt={passenger.firstName}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold">
+                      {passenger.firstName} {passenger.lastName}
+                    </p>
+                    <p className="text-xs text-gray-600">{passenger.email}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="gray" outline onClick={() => setShowPassengersModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Card>
   );
 };

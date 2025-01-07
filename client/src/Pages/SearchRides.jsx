@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Card, Badge, Dropdown, Pagination } from "flowbite-react";
+import { Button, Card, Badge, Dropdown, Pagination, Spinner } from "flowbite-react";
 import { FaCalendarAlt, FaClock, FaUserFriends, FaDollarSign, FaMapMarkerAlt } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,7 +25,7 @@ const SearchRides = () => {
         if (res.ok) {
           setRides(data);
         } else {
-          setError(data.message);
+          setError(data.message || "Failed to fetch rides");
         }
       } catch (error) {
         setError("Failed to fetch rides");
@@ -54,7 +54,6 @@ const SearchRides = () => {
       const data = await res.json();
       if (res.ok) {
         toast.success("You have successfully joined the ride!");
-        // Update the rides list to reflect the change
         setRides((prevRides) =>
           prevRides.map((ride) =>
             ride._id === rideId
@@ -63,10 +62,47 @@ const SearchRides = () => {
           )
         );
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Failed to join the ride");
       }
     } catch (error) {
       toast.error("Failed to join the ride");
+    }
+  };
+
+  const handleLeaveRide = async (rideId) => {
+    if (!currentUser) {
+      toast.error("You must be logged in to leave a ride");
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:8000/rides/leave/${rideId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: currentUser._id }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        toast.success("You have successfully left the ride!");
+        setRides((prevRides) =>
+          prevRides.map((ride) =>
+            ride._id === rideId
+              ? {
+                  ...ride,
+                  passengers: ride.passengers.filter(
+                    (passenger) => passenger.toString() !== currentUser._id
+                  ),
+                }
+              : ride
+          )
+        );
+      } else {
+        toast.error(data.message || "Failed to leave the ride");
+      }
+    } catch (error) {
+      toast.error("Failed to leave the ride");
     }
   };
 
@@ -101,7 +137,11 @@ const SearchRides = () => {
   const currentRides = sortedRides.slice(indexOfFirstRide, indexOfLastRide);
 
   if (loading) {
-    return <div className="text-center py-8">Loading...</div>;
+    return (
+      <div className="text-center py-8">
+        <Spinner size="xl" />
+      </div>
+    );
   }
 
   if (error) {
@@ -188,12 +228,31 @@ const SearchRides = () => {
                     </div>
                   </div>
                 <br />
-                  {/* Join Ride Button */}
-                  {currentUser && !ride.passengers.includes(currentUser._id) && (
+                  {/* Join/Leave Ride Button */}
+                  {currentUser ? (
+                    ride.passengers.includes(currentUser._id) ? (
+                      <Button
+                        gradientDuoTone="failure"
+                        size="sm"
+                        onClick={() => handleLeaveRide(ride._id)}
+                      >
+                        Leave Ride
+                      </Button>
+                    ) : (
+                      <Button
+                        gradientDuoTone="pinkToOrange"
+                        size="sm"
+                        onClick={() => handleJoinRide(ride._id)}
+                        disabled={ride.passengers.length >= ride.seats}
+                      >
+                        Join Ride
+                      </Button>
+                    )
+                  ) : (
                     <Button
                       gradientDuoTone="pinkToOrange"
                       size="sm"
-                      onClick={() => handleJoinRide(ride._id)}
+                      onClick={() => toast.error("You must be logged in to join a ride")}
                       disabled={ride.passengers.length >= ride.seats}
                     >
                       Join Ride
